@@ -1,4 +1,5 @@
 import Expenses from "./components/Expenses/Expenses";
+import NewExpense from "./components/NewExpenses/NewExpense";
 
 function App() {
   //An example of props being used to share data between parent and child:
@@ -25,7 +26,7 @@ function App() {
   ];
   return (
     <div>
-      <h2>Let's get started!</h2>
+      <NewExpense />
       <Expenses items={expenses} />
     </div>
   );
