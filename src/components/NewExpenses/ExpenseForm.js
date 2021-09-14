@@ -8,46 +8,28 @@ const ExpenseForm = (props) => {
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
 
-  //   const [userInput, setUserInput] = useState({
-  //     setEnteredTitle: "d",
-  //     setEnteredDate: "",
-  //     setEnteredAmount: "",
-  //   });
-
   const titleChangeHandler = function (e) {
     setEnteredTitle(e.target.value);
-    // setUserInput((prevState) => {
-    //   return { ...prevState, setEnteredTitle: "Fuck" };
-    // });
-
-    // setUserInput({
-    //   setEnteredTitle: e.target.value,
-    //   ...userInput,
-    // });
-    // console.log(userInput);
-    // console.log(setUserInput);
   };
 
   const amountChangeHandler = function (e) {
     setEnteredAmount(e.target.value);
-    // setUserInput({
-    //   setEnteredAmount: e.target.value,
-    //   ...userInput,
-    // });
   };
 
   const dateChangeHandler = function (e) {
+    console.log(e.target.value);
     setEnteredDate(e.target.value);
-    // setUserInput({
-    //   setEnteredDate: e.target.value,
-    //   ...userInput,
-    // });
   };
 
   const submitHandler = function (e) {
     e.preventDefault();
+    console.log("");
+    console.log(`in expenseForm the date is being entered as ${enteredDate}`);
+    console.log(
+      `in expenseForm the date is being entered as ${new Date(enteredDate)}`
+    );
     const expenseData = {
-      date: Date(enteredDate),
+      date: new Date(enteredDate),
       title: enteredTitle,
       amount: enteredAmount,
     };
