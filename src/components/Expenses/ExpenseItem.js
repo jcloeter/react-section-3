@@ -5,6 +5,7 @@ import Card from "../UI/Card";
 import "./ExpenseItem.css";
 
 const ExpenseItem = (props) => {
+  console.log(props);
   const [title, setTitle] = useState(props.title);
 
   const buttonHandler = () => {
