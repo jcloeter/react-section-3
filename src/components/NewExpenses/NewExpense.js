@@ -1,5 +1,6 @@
 import "./NewExpense.css";
 import ExpenseForm from "./ExpenseForm";
+import { useState } from "react";
 
 const NewExpense = (props) => {
   const saveExpenseDataHandler = (enteredExpenseData) => {
@@ -9,11 +10,24 @@ const NewExpense = (props) => {
     };
 
     props.onAddExpense(expenseData);
+    setIsEditing(false);
   };
+
+  //isEditing=true, user is seeing form
+  const [isEditing, setIsEditing] = useState(false);
+
+  const addNewExpenseHandler = function () {
+    setIsEditing(true);
+  };
+
+  //Start here after work: we need to make the cancel button hide the form:
   return (
     <div className="new-expense">
-      {/* onSaveExpenseData is a prop, it shows that a function should be passed that will be executed after each save of the data, form submit */}
-      <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />
+      {!isEditing && (
+        <button onClick={addNewExpenseHandler}>Add New Expense</button>
+      )}
+
+      {isEditing && <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />}
     </div>
   );
 };
