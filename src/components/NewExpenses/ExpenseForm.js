@@ -24,10 +24,11 @@ const ExpenseForm = (props) => {
     setEnteredDate(e.target.value);
   };
 
-  const cancelButtonHandler = function () {
-    console.log("canceled :/");
-    // changeFormVisibility(false);
-  };
+  // const cancelButtonHandler = function () {
+  //   console.log("canceled :/");
+  //   props.onClickCancelBtn();
+  //   // changeFormVisibility(false);
+  // };
 
   // const addNewHandler = function () {
   //   changeFormVisibility(true);
@@ -39,11 +40,11 @@ const ExpenseForm = (props) => {
 
   const submitHandler = function (e) {
     e.preventDefault();
-    console.log("");
-    console.log(`in expenseForm the date is being entered as ${enteredDate}`);
-    console.log(
-      `in expenseForm the date is being entered as ${new Date(enteredDate)}`
-    );
+    // console.log("");
+    // console.log(`in expenseForm the date is being entered as ${enteredDate}`);
+    // console.log(
+    //   `in expenseForm the date is being entered as ${new Date(enteredDate)}`
+    // );
     const expenseData = {
       date: new Date(enteredDate),
       title: enteredTitle,
@@ -55,18 +56,7 @@ const ExpenseForm = (props) => {
     setEnteredAmount("");
     setEnteredDate("");
     setEnteredTitle("");
-
-    // changeFormVisibility(false);
-    // ExpenseItem(expenseData);
   };
-
-  // if (!showForm) {
-  //   return (
-  //     <button onClick={addNewHandler} type="button">
-  //       Add New Expense
-  //     </button>
-  //   );
-  // }
 
   return (
     <form onSubmit={submitHandler}>
@@ -101,7 +91,7 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div className="new-expense__actions">
-        <button type="button" onClick={cancelButtonHandler}>
+        <button type="button" onClick={props.onCancel}>
           Cancel
         </button>
 

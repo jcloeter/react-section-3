@@ -16,18 +16,26 @@ const NewExpense = (props) => {
   //isEditing=true, user is seeing form
   const [isEditing, setIsEditing] = useState(false);
 
-  const addNewExpenseHandler = function () {
+  const startEditingHandler = function () {
     setIsEditing(true);
   };
 
-  //Start here after work: we need to make the cancel button hide the form:
+  const stopEditingHandler = function () {
+    setIsEditing(false);
+  };
+
   return (
     <div className="new-expense">
       {!isEditing && (
-        <button onClick={addNewExpenseHandler}>Add New Expense</button>
+        <button onClick={startEditingHandler}>Add New Expense</button>
       )}
 
-      {isEditing && <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />}
+      {isEditing && (
+        <ExpenseForm
+          onSaveExpenseData={saveExpenseDataHandler}
+          onCancel={stopEditingHandler}
+        />
+      )}
     </div>
   );
 };
